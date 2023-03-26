@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")//http:localhost:4200
 @RequestMapping("/portfolio")//localhost:8080/portfolio
-@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")
-//@CrossOrigin(origin = "http://localhost:4200")
+
 public class PortfolioController {
     
     @GetMapping("/hola")
