@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/person")//localhost:8080/person
-@CrossOrigin(origins = "https://portfolio-francisco-deramo.onrender.com")
+@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")
 //@CrossOrigin(origin = "http://localhost:4200")
 public class PersonController {
     
