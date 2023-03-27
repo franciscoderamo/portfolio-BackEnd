@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http:localhost:4200")//https:/  /portfolio-francisco-deramo.web.app
+@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")
+//@CrossOrigin(origins = "http: //localhost:4200")
 @RequestMapping("/portfolio")//localhost:8080/portfolio
 
 public class PortfolioController {

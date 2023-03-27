@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RestController
-@CrossOrigin(origins = "http:localhost:4200")//https:/  /portfolio-francisco-deramo.web.app
+@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")
+//@CrossOrigin(origins = "http: //localhost:4200")
 @RequestMapping("/person")//localhost:8080/person
 
 public class PersonController {
@@ -57,7 +58,13 @@ public class PersonController {
         personService.deletePerson(id);
         return new ResponseEntity(HttpStatus.OK);
     }
-
+    
+    /*@PutMapping("/edit")
+    public ResponseEntity updatePersona(@RequestBody PersonModel pers){
+        personService.savePerson(pers);
+        return new ResponseEntity(HttpStatus.OK);
+    }*/
+    
     @PutMapping("/edit/{id}")
     public ResponseEntity <?> editPerson(@PathVariable("id") Long id, @RequestBody PersonModel person) {
         PersonModel perso = personService.findPerson(id);
