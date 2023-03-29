@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "https://portfolio-francisco-deramo.web.app")
-//@CrossOrigin(origins = "http: //localhost:4200")
 @RequestMapping("/skillgroup")//localhost:8080/skillgroup
+@CrossOrigin(origins = {"https://portfolio-francisco-deramo.web.app","http://localhost:4200"})
+//@CrossOrigin(origins = "http: //localhost:4200")
 
 public class SkillGroupController {
     
