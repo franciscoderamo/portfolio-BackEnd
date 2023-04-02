@@ -12,31 +12,31 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "task")
+@Table(name = "tasks")
 @Getter @Setter
 public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
+    PersonModel person;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_services")
-    private ServicesModel services;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_service")
+    ServicesModel services;
     
     
     public TaskModel() {
     }
 
-    public TaskModel(Long id, String title) {
+    public TaskModel(int id, String title) {
         this.id = id;
         this.title = title;
     } 
-   
+    
     /*    
     public Long getId() {
         return id;

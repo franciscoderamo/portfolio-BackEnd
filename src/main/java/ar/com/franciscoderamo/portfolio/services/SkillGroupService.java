@@ -3,11 +3,15 @@ package ar.com.franciscoderamo.portfolio.services;
 import ar.com.franciscoderamo.portfolio.interfaces.SkillGroupInterface;
 import ar.com.franciscoderamo.portfolio.models.SkillGroupModel;
 import ar.com.franciscoderamo.portfolio.repositories.SkillGroupRepository;
+import jakarta.transaction.Transactional;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class SkillGroupService implements SkillGroupInterface{
     //to deploy repository we used Autowired
     //dependency injection

@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -20,24 +21,25 @@ import lombok.Setter;
 public class ServicesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
+    PersonModel person;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "services", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "services", cascade = CascadeType.ALL, orphanRemoval = true )
     List<TaskModel> task;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "services", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "services", cascade = CascadeType.ALL, orphanRemoval = true )
     List<PortfolioModel> portfolio;
+    
     
     public ServicesModel() {
     }
     
     
-    public ServicesModel(Long id, String name) {
+    public ServicesModel(int id, String name) {
         this.id = id;
         this.name = name;
     }

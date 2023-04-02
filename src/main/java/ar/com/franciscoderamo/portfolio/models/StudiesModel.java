@@ -8,7 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -18,21 +22,23 @@ public class StudiesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String carrer;
     private String institution;
-    private Long start;
-    private Long end;
+    @Temporal(TemporalType.DATE)
+    private Date start;
+    @Temporal(TemporalType.DATE)
+    private Date end;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
-    
+    PersonModel person;
+
     
     public StudiesModel() {
     }
 
-    public StudiesModel(Long id, String carrer, String institution, Long start, Long end) {
+    public StudiesModel(int id, String carrer, String institution, Date start, Date end) {
         this.id = id;
         this.carrer = carrer;
         this.institution = institution;

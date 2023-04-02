@@ -9,27 +9,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "experience")
+@Table(name = "experiences")
 @Getter @Setter
 public class ExperienceModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String position;
     private int ages;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
+    PersonModel person;
 
     public ExperienceModel() {
     }
 
-    public ExperienceModel(Long id, String position, int ages) {
+    public ExperienceModel(int id, String position, int ages) {
         this.id = id;
         this.position = position;
         this.ages = ages;

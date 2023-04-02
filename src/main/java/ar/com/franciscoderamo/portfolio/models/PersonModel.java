@@ -10,16 +10,18 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
     
 @Entity
-@Table(name = "person")
+@Table(name = "persons")
 @Getter @Setter
+//@NoArgsConstructor
 public class PersonModel {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String name;
     private String resume;
     private String description;
@@ -33,34 +35,34 @@ public class PersonModel {
     private String country;
     
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<StudiesModel> studies;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<ExperienceModel> experience;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<WorkedModel> worked;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<SkillGroupModel> skillgroup;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<SkillModel> skill;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<ServicesModel> services;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<TaskModel> task;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     List<PortfolioModel> portfolio;
     
     public PersonModel () {
     }
     
-    public PersonModel (Long id, String name, String resume, String description, String about, String image, String whatsapp, String github, String linkedin, String email, String ubication, String country) {
+    public PersonModel (int id, String name, String resume, String description, String about, String image, String whatsapp, String github, String linkedin, String email, String ubication, String country) {
         this.id = id;
         this.name = name;
         this.resume = resume;
@@ -74,4 +76,20 @@ public class PersonModel {
         this.ubication = ubication;
         this.country = country;
     }
+    /*
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BankAccountBidirectional> bankAccounts;
+
+    public void addBankAccount(BankAccountBidirectional bankAccount) {
+        if (null == bankAccounts) {
+            bankAccounts = new HashSet<>();
+        }
+        bankAccounts.add(bankAccount);
+        bankAccount.setBank(this);
+    }
+
+    public void removeComment(BankAccountBidirectional bankAccount) {
+        bankAccounts.remove(bankAccount);
+        bankAccount.setBank(null);
+    }*/
 }

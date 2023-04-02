@@ -8,7 +8,7 @@ public interface StudiesInterface {
     
     public List<StudiesModel> getStudies();
     
-    public void saveStudies(StudiesModel edu);
+    public void saveStudies(StudiesModel studies);
     
     public void deleteStudies (Long id);
     

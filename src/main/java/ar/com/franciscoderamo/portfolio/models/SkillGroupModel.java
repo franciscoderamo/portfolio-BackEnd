@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -20,29 +21,29 @@ import lombok.Setter;
 public class SkillGroupModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String category;
     private int ages;
     private String icon;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
+    PersonModel person;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "skillgroup", cascade = CascadeType.ALL )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "skillgroup", cascade = CascadeType.ALL, orphanRemoval = true )
     List<SkillModel> skill;
     
     
     public SkillGroupModel() {
     }
 
-    public SkillGroupModel(Long id, String category, int ages, String icon) {
+    public SkillGroupModel(int id, String category, int ages, String icon) {
         this.id = id;
         this.category = category;
         this.ages = ages;
         this.icon = icon;
     }
-
+    
     
     /*    
     public Long getId() {

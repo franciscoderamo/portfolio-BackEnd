@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -17,23 +18,24 @@ import lombok.Setter;
 public class SkillModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String title;
     private int porcentage;
    
   
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_skill_group")
-    private SkillGroupModel skillgroup;
+    SkillGroupModel skillgroup;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
-    private PersonModel person;
+    PersonModel person;
+    
     
     public SkillModel() {
     }
 
-    public SkillModel(Long id, String title, int porcentage) {
+    public SkillModel(int id, String title, int porcentage) {
         this.id = id;
         this.title = title;
         this.porcentage = porcentage;
