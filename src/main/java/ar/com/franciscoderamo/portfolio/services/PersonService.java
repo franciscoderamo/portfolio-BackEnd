@@ -16,28 +16,28 @@ public class PersonService implements PersonInterface{
     //to deploy repository we used Autowired
     //dependency injection
     @Autowired
-    public PersonRepository personRepo;
+    public PersonRepository personRepository;
     
     @Override
     public List<PersonModel> getPerson() {
-        List<PersonModel> listPerson = personRepo.findAll();
+        List<PersonModel> listPerson = personRepository.findAll();
         return listPerson;
     }
 
     @Override
     public void savePerson(PersonModel per) {
-        personRepo.save(per) ;
+        personRepository.save(per) ;
     }
 
     @Override
-    public void deletePerson(Long id) {
-        personRepo.deleteById(id);
+    public void deletePerson(int id) {
+        personRepository.deleteById(id);
     }
 
     @Override
-    public PersonModel findPerson(Long id) {
-        PersonModel pers = personRepo.findById(id).orElse(null);
-        return pers;
+    public PersonModel findPerson(int id) {
+        PersonModel person = personRepository.findById(id).orElse(null);
+        return person;
     }
     
 }

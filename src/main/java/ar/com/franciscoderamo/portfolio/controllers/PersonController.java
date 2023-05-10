@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "http: //localhost:4200")
 @RequestMapping("/person")//localhost:8080/person
 @CrossOrigin(origins = {"https://portfolio-francisco-deramo.web.app","http://localhost:4200"})
 //@CrossOrigin(origins = "http: //localhost:4200")
@@ -46,7 +45,7 @@ public class PersonController {
     
     @GetMapping ("/see/{id}")
     @ResponseBody
-    public PersonModel seePerson(@PathVariable Long id){
+    public PersonModel seePerson(@PathVariable int id){
         return personService.findPerson(id);
     }
     
@@ -57,7 +56,7 @@ public class PersonController {
     }
         
     @DeleteMapping ("/delete/{id}")
-    public ResponseEntity deletePerson(@PathVariable Long id){
+    public ResponseEntity deletePerson(@PathVariable int id){
         personService.deletePerson(id);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -69,7 +68,7 @@ public class PersonController {
     }*/
     
     @PutMapping("/edit/{id}")
-    public ResponseEntity <?> editPerson(@PathVariable("id") Long id, @RequestBody PersonModel person) {
+    public ResponseEntity <?> editPerson(@PathVariable("id") int id, @RequestBody PersonModel person) {
         PersonModel perso = personService.findPerson(id);
 
         perso.setName(person.getName());
@@ -86,5 +85,10 @@ public class PersonController {
 
         personService.savePerson(perso);
         return new ResponseEntity(HttpStatus.OK);
+    }
+    
+    @GetMapping("/see/1")
+    public PersonModel findPersona(){
+        return personService.findPerson((int)1);
     }
 }

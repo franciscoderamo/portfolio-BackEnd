@@ -1,5 +1,6 @@
 package ar.com.franciscoderamo.portfolio.models;
 
+import com.sun.istack.NotNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,9 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
     
 @Entity
@@ -22,16 +23,35 @@ public class PersonModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
+    @Size(min = 1, max = 45, message = "No cumple con la longitud")
     private String name;
+    @NotNull
+    @Size(min = 1, max = 60, message = "No cumple con la longitud")
     private String resume;
+    @NotNull
+    @Size(min = 1, max = 150, message = "No cumple con la longitud")
     private String description;
+    @NotNull
+    @Size(min = 1, max = 150, message = "No cumple con la longitud")
     private String about;
+    @NotNull
+    @Size(min = 1, max = 100, message = "Ingrese el link de la imagen")
     private String image;
+    @Size(min = 1, max = 50, message = "No cumple con la longitud")
     private String whatsapp;
+    @Size(min = 1, max = 100, message = "No cumple con la longitud")
     private String github;
+    @Size(min = 1, max = 100, message = "No cumple con la longitud")
     private String linkedin;
+    @NotNull
+    @Size(min = 1, max = 100, message = "No cumple con la longitud")
     private String email;
+    @NotNull
+    @Size(min = 1, max = 45, message = "No cumple con la longitud")
     private String ubication;
+    @NotNull
+    @Size(min = 1, max = 45, message = "No cumple con la longitud")
     private String country;
     
     
@@ -76,20 +96,5 @@ public class PersonModel {
         this.ubication = ubication;
         this.country = country;
     }
-    /*
-    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BankAccountBidirectional> bankAccounts;
 
-    public void addBankAccount(BankAccountBidirectional bankAccount) {
-        if (null == bankAccounts) {
-            bankAccounts = new HashSet<>();
-        }
-        bankAccounts.add(bankAccount);
-        bankAccount.setBank(this);
-    }
-
-    public void removeComment(BankAccountBidirectional bankAccount) {
-        bankAccounts.remove(bankAccount);
-        bankAccount.setBank(null);
-    }*/
 }
