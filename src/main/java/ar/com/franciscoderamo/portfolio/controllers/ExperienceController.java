@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RestController
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @RequestMapping("/experience")//localhost:8080/experience
 @CrossOrigin(origins = {"https://portfolio-francisco-deramo.web.app","http://localhost:4200"})
 //@CrossOrigin(origins = "http: //localhost:4200")
@@ -35,7 +35,7 @@ public class ExperienceController {
     //to deploy repository we used Autowired
     //dependency injection
     @Autowired
-    private ExperienceInterface experienceService;
+    ExperienceInterface experienceService;
     
     @GetMapping ("/all")
     @ResponseBody
@@ -45,7 +45,7 @@ public class ExperienceController {
     
     @GetMapping ("/see/{id}")
     @ResponseBody
-    public ExperienceModel seeExperience(@PathVariable Long id){
+    public ExperienceModel seeExperience(@PathVariable int id){
         return experienceService.findExperience(id);
     }
     
@@ -56,20 +56,19 @@ public class ExperienceController {
     }
         
     @DeleteMapping ("/delete/{id}")
-    public ResponseEntity deleteExperience(@PathVariable Long id){
+    public ResponseEntity deleteExperience(@PathVariable int id){
         experienceService.deleteExperience(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity <?> editExperience(@PathVariable("id") Long id, @RequestBody ExperienceModel experience) {
+    public ResponseEntity <?> editExperience(@PathVariable("id") int id, @RequestBody ExperienceModel experience) {
         ExperienceModel exp = experienceService.findExperience(id);
         
-        exp.setId(experience.getId());
         exp.setPosition(experience.getPosition());
         exp.setAges(experience.getAges());
 
-       experienceService.saveExperience(exp);
+        experienceService.saveExperience(exp);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

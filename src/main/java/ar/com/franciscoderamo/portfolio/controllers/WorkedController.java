@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/worked")//localhost:8080/studies
+@RequestMapping("/jobs")//localhost:8080/studies
 @CrossOrigin(origins = {"https://portfolio-francisco-deramo.web.app","http://localhost:4200"})
 //@CrossOrigin(origins = "http: //localhost:4200")
 

@@ -69,6 +69,7 @@ public class PortfolioController {
         portf.setImage(portfolio.getImage());
         portf.setDescription(portfolio.getDescription());
         portf.setLink(portfolio.getLink());
+        portf.setIdService(portfolio.getIdService());
 
         portfolioService.savePortfolio(portf);
         return new ResponseEntity(HttpStatus.OK);

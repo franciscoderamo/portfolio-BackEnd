@@ -66,6 +66,7 @@ public class ServicesController {
 
         serv.setId(services.getId());
         serv.setName(services.getName());
+        serv.setIcon(services.getIcon());
 
         servicesService.saveServices(serv);
         return new ResponseEntity(HttpStatus.OK);

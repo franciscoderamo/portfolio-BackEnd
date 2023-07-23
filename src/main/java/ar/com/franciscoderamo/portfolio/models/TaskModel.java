@@ -1,12 +1,12 @@
 package ar.com.franciscoderamo.portfolio.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+//import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +19,8 @@ public class TaskModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-
+    private int idService;
+    /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
     PersonModel person;
@@ -27,14 +28,15 @@ public class TaskModel {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_service")
     ServicesModel services;
-    
+    */
     
     public TaskModel() {
     }
 
-    public TaskModel(int id, String title) {
+    public TaskModel(int id, String title, int idService) {
         this.id = id;
         this.title = title;
+        this.idService = idService;
     } 
     
     /*    

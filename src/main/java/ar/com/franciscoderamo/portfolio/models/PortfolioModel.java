@@ -1,15 +1,15 @@
 package ar.com.franciscoderamo.portfolio.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+//import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+//import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -24,7 +24,8 @@ public class PortfolioModel {
     private String image;
     private String description;
     private String link;
-
+    private int idService;
+    /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_person")
     PersonModel person;
@@ -32,17 +33,18 @@ public class PortfolioModel {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_service")
     ServicesModel services;
-    
+    */
     
     public PortfolioModel() {
     }
     
-    public PortfolioModel(int id, String title, String image, String description, String link) {
+    public PortfolioModel(int id, String title, String image, String description, String link, int idService) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.description = description;
         this.link = link;
+        this.idService = idService;
     }
     
     

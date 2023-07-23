@@ -25,7 +25,7 @@ public class ServicesService implements ServicesInterface{
 
     @Override
     public void saveServices(ServicesModel services) {
-        servicesRepo.save(services) ;
+        servicesRepo.save(services);
     }
 
     @Override

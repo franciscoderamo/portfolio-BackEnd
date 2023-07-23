@@ -66,6 +66,7 @@ public class TaskController {
 
         tsk.setId(task.getId());
         tsk.setTitle(task.getTitle());
+        tsk.setIdService(task.getIdService());
 
         taskService.saveTask(tsk);
         return new ResponseEntity(HttpStatus.OK);

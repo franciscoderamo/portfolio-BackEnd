@@ -5,9 +5,10 @@ import java.util.List;
 
 
 public interface SkillInterface {
+    
     public List<SkillModel> getSkill();
     
-    public void saveSkill(SkillModel edu);
+    public void saveSkill(SkillModel skill);
     
     public void deleteSkill (Long id);
     

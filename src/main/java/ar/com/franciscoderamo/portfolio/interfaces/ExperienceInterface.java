@@ -9,8 +9,8 @@ public interface ExperienceInterface {
     
     public void saveExperience(ExperienceModel experience);
     
-    public void deleteExperience (Long id);
+    public void deleteExperience (int id);
     
-    public ExperienceModel findExperience(Long id);
+    public ExperienceModel findExperience(int id);
 
 }

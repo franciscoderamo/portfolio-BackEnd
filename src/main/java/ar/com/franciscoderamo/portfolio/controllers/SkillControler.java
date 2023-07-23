@@ -67,6 +67,7 @@ public class SkillControler {
         ski.setId(skill.getId());
         ski.setTitle(skill.getTitle());
         ski.setPorcentage(skill.getPorcentage());
+        ski.setIdSkillGroup(skill.getIdSkillGroup());
 
         skillService.saveSkill(ski);
         return new ResponseEntity(HttpStatus.OK);

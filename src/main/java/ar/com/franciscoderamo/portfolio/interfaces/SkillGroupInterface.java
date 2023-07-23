@@ -4,9 +4,10 @@ import ar.com.franciscoderamo.portfolio.models.SkillGroupModel;
 import java.util.List;
 
 public interface SkillGroupInterface {
+    
     public List<SkillGroupModel> getSkillGroup();
     
-    public void saveSkillGroup(SkillGroupModel edu);
+    public void saveSkillGroup(SkillGroupModel skillGroup);
     
     public void deleteSkillGroup (Long id);
     
